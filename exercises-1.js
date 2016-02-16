@@ -13,13 +13,15 @@
 // 0. write your own forEach() that takes two arguments: an array, and a callback
 
 function forEach(array, callback){
-    // YOUR CODE HERE
-
+for(var i = 0; i < array.length; i++) {
+ callback(array[i]);
 }
+}
+//found this one really confusing. It's basically showing you how a forEach loop works.
 
 // testing your code with console.assert
 var total = 1;
-forEach([1, 2, 3, 4], function(a){ total *= a; });
+forEach([1, 2, 3, 4], function(a){ total *= a; }); //6x4??
 // and finally assert; if this fails, the program stops
 console.assert(total === 24);
 
@@ -29,9 +31,6 @@ console.assert(total === 24);
 function sum(){
     var anumber = 0;
     var args = [].slice.call(arguments);
-    function sumList (item) {
-      anumber += item;
-    }
     args.forEach(function (item){ //this is applying the sumList function to every item in args
       anumber += item;
     });
@@ -104,28 +103,62 @@ var arrayMethod = [1, 24, 3, "hello", true, 102, "woody", false,];
 
 console.assert( arrayMethod.sort());
 
-// .concat()
+// .concat() method returns a new array comprised of the array on which it is called joined with the array(s) and/or value(s) provided as arguments
 
 console.assert( arrayMethod.concat());
 
-// .indexOf()
+// .indexOf() //returns the index of what you're calling
 
-// .split()
+console.assert( arrayMethod.indexOf());
 
-// .join()
+// .split() splits the string into an array of substrings
 
-// .pop()
+var arrayMethod2 = "Hello, my name is Bailey.";
 
-// .push()
+console.assert( arrayMethod2.split("a"));
 
-// .slice()
+// .join() // joins the elements of an array into a string
 
-// .splice()
+console.assert( arrayMethod.join());
 
-// .shift()
+// .pop() //  removes the last element from an array and returns that element.
 
-// .unshift()
+console.assert( arrayMethod.pop());
 
-// .filter()
+// .push() adds one more element to the end of the array
 
-// .map()
+console.assert( arrayMethod.push("name"));
+
+// .slice() selects elements from an array
+
+console.assert( arrayMethod.slice(1,3)); // have to do it by index
+
+// .splice() removes exisiting elements and/or adds new ones
+
+console.assert (arrayMethod.splice(1,1)); //first part selects what index, second part indicates #
+//of old arrays to remove
+
+// .shift() removes the first element of an array and returns it
+
+console.assert (arrayMethod.shift());
+
+// .unshift() adds a new element to beginning of array and returns new length of arrays
+
+console.assert (arrayMethod.shift('cat'));
+
+// .filter() similar to forEach, it creates a new array with all elements that pass the test implemented by the provided function.
+
+function isSmallEnough () {
+  value = 0;
+  return value < 10;
+}
+console.assert (arrayMethod.filter (isSmallEnough));
+
+// .map() creates a new array with the results of calling a
+// provided function on every element in this array. Sounds like forEach??
+
+function isSmallEnough () {
+  value = 0;
+  return value < 10;
+}
+console.log (arrayMethod.map (isSmallEnough));
